@@ -7,6 +7,9 @@ http://www.mulesoft.org/schema/mule/spring http://www.mulesoft.org/schema/mule/s
 	<flow name="best-commerceFlow" doc:id="fb84b51a-c05a-431b-8b54-bb27b8165401" >
 		<spring:authorization-filter doc:name="Authorization filter" doc:id="0e31df24-ace5-4413-bb68-0f677369b9f7" />
 	</flow>
+	
+	<spring:config name="springConfig" files="beans.xml" />
+	
 </mule>
 	
 
