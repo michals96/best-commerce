@@ -16,5 +16,8 @@
 
     <bean id="xmen" class="com.demo.entrypoint.Person">
     </bean>
+    
+    <bean id="allProducts" class="com.demo.entrypoint.controllers.BestCommerceController">
+    </bean>
 
 </beans>
