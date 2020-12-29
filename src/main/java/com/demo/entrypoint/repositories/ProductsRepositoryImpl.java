@@ -19,15 +19,6 @@ public class ProductsRepositoryImpl implements ProductsRepository{
 
 	@Override
 	public List<Product> getAllProducts() {
-		/*List<String> productsList1 = new ArrayList<String>(); 
-		
-		Product firstProduct = new Product(1, "asd", "asd", "asd", 10.0, 1, "asd", "asd");
-		Product secondProduct = new Product(2, "asd", "asd", "asd", 10.0, 1, "asd", "asd");
-		
-		productsList1.add(firstProduct.toString());
-		productsList1.add(secondProduct.toString()); */
-		
-		/*return productsList;*/
 		
 		List<Product> productsList = new ArrayList<Product>(); 
 		
@@ -45,7 +36,6 @@ public class ProductsRepositoryImpl implements ProductsRepository{
 			ResultSet resultSet = statement.executeQuery("SELECT * FROM products");
 			
 			while(resultSet.next()){
-				//System.out.println(resultSet.getString("name"));
 				productsList.add(new Product(
 						Long.valueOf(resultSet.getString("id")).longValue(), 
 						resultSet.getString("category"),
@@ -56,17 +46,11 @@ public class ProductsRepositoryImpl implements ProductsRepository{
 						resultSet.getString("paymentoption"),
 						resultSet.getString("deliverymethod")));
 			}
-			
 		} catch (SQLException e) {
 
 			e.printStackTrace();
 		}
-		
-		/*for(Product product : productsList) {
-			System.out.println(product);
-		}*/
-		
+
 		return productsList;
 	}
-
 }

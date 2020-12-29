@@ -17,11 +17,6 @@ public class ProductsServiceImpl implements ProductsService{
 	@Inject
 	private final ProductsRepository productsRepository;
 	
-	@Autowired
-	ProductsServiceImpl(ProductsRepository productsRepository){
-		this.productsRepository = productsRepository;
-	}
-	
 	public ProductsServiceImpl() {
 		this.productsRepository = new ProductsRepositoryImpl();
 	}
@@ -30,6 +25,4 @@ public class ProductsServiceImpl implements ProductsService{
 	public List<Product> listProducts() {
 		return productsRepository.getAllProducts();
 	}
-	
-
 }
