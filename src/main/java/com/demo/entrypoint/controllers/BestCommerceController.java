@@ -8,7 +8,20 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.demo.entrypoint.entity.Product;
+import com.demo.entrypoint.services.ProductsService;
+
 public class BestCommerceController {
+	
+	private final ProductsService productsService;
+	
+	public BestCommerceController(ProductsService productsService) {
+		this.productsService = productsService;
+	}
+	
+	public List<Product> listProducts(){
+		return productsService.listProducts();
+	}
 	
 	public List<String> allProducts() {
 		List<String> productsList = new ArrayList<String>(); 

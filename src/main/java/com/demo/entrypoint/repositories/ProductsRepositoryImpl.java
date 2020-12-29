@@ -20,7 +20,7 @@ public class ProductsRepositoryImpl implements ProductsRepository{
 		productsList.add(firstProduct);
 		productsList.add(secondProduct);
 		
-		return null;
+		return productsList;
 	}
 
 }
