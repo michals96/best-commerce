@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="best-commerce-test-suite.xml" />
+	<munit:test name="ListAllProductsNotNull" doc:id="38552beb-832c-466b-8830-217adbeb4b1e" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to ListAllProducts" doc:id="fa659acb-8138-4612-980d-a9ef9dfb8049" name="ListAllProducts"/>
+		</munit:execution>
+		<munit:validation>
+			<munit-tools:assert-that doc:name="Assert that" doc:id="8544ad2f-1057-4cbe-a413-3210b4985d63" message="Payload is null" expression="#[payload]" is="#[MunitTools::notNullValue()]"/>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="ListSortedProductsNotNull" doc:id="b8e43046-0084-4720-988a-8314b9591853" description="Test">
+		<munit:execution >
+			<munit:set-event doc:name="Set Event" doc:id="308cfbdc-e3cb-429a-bb87-b5310ea9eaac" >
+				<munit:attributes value="#[{queryParams:{sortAttribute:'inventory'}}]" />
+				<munit:variables >
+					<munit:variable key="sortAttribute" value="price" />
+				</munit:variables>
+
+			</munit:set-event>
+			<flow-ref doc:name="Flow-ref to ListSortedProducts" doc:id="8e61284f-c46b-432d-aa65-2d17e80ea5e2" name="ListSortedProducts"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that" doc:id="bf1d5cea-2ff6-4eb0-952b-b3e2fc38d924" is="#[MunitTools::notNullValue()]" message="Payload is not null" expression="#[payload]"/>
+		</munit:validation>
+	</munit:test>
+
+
+</mule>
