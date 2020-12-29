@@ -74,6 +74,11 @@
             <version>1.5.22</version>
             <classifier>mule-plugin</classifier>
         </dependency>
+		<dependency>
+		    <groupId>com.sun.org.apache.xml.internal</groupId>
+		    <artifactId>resolver</artifactId>
+		    <version>20050927</version>
+		</dependency>
         <dependency>
             <groupId>org.mule.connectors</groupId>
             <artifactId>mule-sockets-connector</artifactId>
