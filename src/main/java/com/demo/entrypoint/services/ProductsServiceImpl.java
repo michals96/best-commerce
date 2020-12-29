@@ -3,6 +3,8 @@ package com.demo.entrypoint.services;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 import javax.inject.Inject;
 
@@ -23,10 +25,14 @@ public class ProductsServiceImpl implements ProductsService{
 	public ProductsServiceImpl() {
 		this.productsRepository = new ProductsRepositoryImpl();
 	}
-
+	
+	public List<Product> filterListByInventory(List<Product> list) {
+		return list.stream().filter(product -> product.getInventory() >= 5).collect(Collectors.toList());
+	}
+	
 	@Override
 	public List<Product> listProducts() {
-		return productsRepository.getAllProducts();
+		return filterListByInventory(productsRepository.getAllProducts());
 	}
 	
 	@Override
@@ -45,6 +51,6 @@ public class ProductsServiceImpl implements ProductsService{
 			});
 		}
 		
-		return productsList;
+		return filterListByInventory(productsList);
 	}
 }

@@ -20,7 +20,6 @@ public class BestCommerceController {
 	}
 	
 	public List<Product> sortedProducts(String sortAttribute){
-		System.out.println(sortAttribute);
 		return productsService.listSortedProducts(sortAttribute);
 	}
 	
