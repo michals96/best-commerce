@@ -13,10 +13,25 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	
 	<flow name="ListAllProducts" doc:id="86e466f2-15bc-4cda-bc19-9880a473df6b" >
 		<http:listener doc:name="Listener" doc:id="bf59f129-ca77-4f04-b52e-317fa33a8b53" config-ref="HTTP_Listener_config" path="/allproducts"/>
-		<java:invoke doc:name="Invoke" doc:id="8c654a90-e68f-4cb1-ab53-1359ac566355" instance="allProducts" class="com.demo.entrypoint.controllers.BestCommerceController" method="listProducts()">
+		<java:invoke doc:name="Invoke" doc:id="8c654a90-e68f-4cb1-ab53-1359ac566355" instance="allProducts" class="com.demo.entrypoint.controllers.BestCommerceController" method="allProducts()">
 		</java:invoke>
 		<logger level="INFO" doc:name="Logger" doc:id="05e336d0-cea0-4b45-bcf9-770f1b6e1d9c" message="#[payload]"/>
 		<ee:transform doc:name="Transform Message" doc:id="8f534c59-5552-4342-b713-a3a15fb06806" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output json
+---
+payload as Array]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+	<flow name="ListSortedProducts" doc:id="0ca9059b-cca6-46ec-a5a9-368c1aee6779" >
+		<http:listener doc:name="Listener" doc:id="5f64b5c4-1f23-4e8b-bd3a-468fe72dbd04" config-ref="HTTP_Listener_config" path="/sortedproducts"/>
+		<java:invoke doc:name="Invoke" doc:id="dff0bad2-f764-49d9-b2ce-ac155d40a345" instance="allProducts" class="com.demo.entrypoint.controllers.BestCommerceController" method="sortedProducts(String)">
+			<java:args ><![CDATA[#[{ arg0 : attributes.queryParams.sortAttribute as String }]]]></java:args>
+		</java:invoke>
+		<logger level="INFO" doc:name="Logger" doc:id="fa59dea8-db71-4e8a-9016-6ae66becee1e" message="#[payload]"/>
+		<ee:transform doc:name="Transform Message" doc:id="a634b770-e82a-4e43-ba50-4e0f78fdb02e" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0
 output json
