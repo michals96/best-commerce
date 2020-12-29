@@ -2,20 +2,14 @@ package com.demo.entrypoint.services;
 
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
-
 import javax.inject.Inject;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.demo.entrypoint.entity.Product;
 import com.demo.entrypoint.repositories.ProductsRepository;
 import com.demo.entrypoint.repositories.ProductsRepositoryImpl;
-import com.sun.org.apache.xml.internal.resolver.readers.SAXCatalogParser;
+
 
 @Service("productsServiceImpl")
 public class ProductsServiceImpl implements ProductsService{
