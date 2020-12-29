@@ -1,8 +1,7 @@
 package com.demo.entrypoint.entity;
-import lombok.*;
+import javax.persistence.*;
 
-@AllArgsConstructor
-@NoArgsConstructor
+@Entity
 public class Product {
 	private long id;
 	private String category;
@@ -13,7 +12,18 @@ public class Product {
 	private String paymentoption;
 	private String deliverymethod;
 	
-    @Override
+    public Product(long id, String category, String name, String description, Double unitprice, Integer inventory, String paymentoption, String deliverymethod) {
+    	this.id = id;
+    	this.category = category;
+    	this.name = name;
+    	this.description = description;
+    	this.unitprice = unitprice;
+    	this.inventory = inventory;
+    	this.paymentoption = paymentoption;
+    	this.deliverymethod = deliverymethod;
+	}
+
+	@Override
     public String toString() {
         return name;
     }
