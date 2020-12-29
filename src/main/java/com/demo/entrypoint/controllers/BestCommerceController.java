@@ -5,10 +5,13 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BestCommerceController {
 	
-	public String greetings() {
+	public List<String> allProducts() {
+		List<String> productsList = new ArrayList<String>(); 
 		
 		String url = "jdbc:postgresql://localhost:5432/testdb?user=postgres&password=postgres";
 		
@@ -25,6 +28,7 @@ public class BestCommerceController {
 			
 			while(resultSet.next()){
 				System.out.println(resultSet.getString("name"));
+				productsList.add(resultSet.getString("name"));
 			}
 			
 		} catch (SQLException e) {
@@ -32,7 +36,7 @@ public class BestCommerceController {
 			e.printStackTrace();
 		}
 		
-		return "Hello world!";
+		return productsList;
 	}
 
 }

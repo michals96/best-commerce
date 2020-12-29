@@ -10,30 +10,17 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="a8e7811c-04f7-4bd9-be2a-86b51a9fd01c" >
 		<http:listener-connection host="0.0.0.0" port="8081" />
 	</http:listener-config>
-	<flow name="best-commerceFlow" doc:id="fb84b51a-c05a-431b-8b54-bb27b8165401" >
-		<http:listener doc:name="Listener" doc:id="4a530bb3-9619-470c-afaa-056b288158da" config-ref="HTTP_Listener_config" path="/spring"/>
-		<java:invoke doc:name="Invoke" doc:id="ab983dce-54e7-4689-954a-724a199f647e" instance="xmen" class="com.demo.entrypoint.Person" method="greetings()"/>
-		<logger level="INFO" doc:name="Logger" doc:id="47e09d56-0ce0-4a3e-bb8c-249f106f4637" message="#[payload]"/>
-		<ee:transform doc:name="Transform Message" doc:id="2021cee8-008b-4f83-bd59-b1f61386450c" >
-			<ee:message >
-				<ee:set-payload ><![CDATA[%dw 2.0
-output json
----
-payload as String]]></ee:set-payload>
-			</ee:message>
-		</ee:transform>
-	</flow>
 	
 	<flow name="ListAllProducts" doc:id="86e466f2-15bc-4cda-bc19-9880a473df6b" >
 		<http:listener doc:name="Listener" doc:id="bf59f129-ca77-4f04-b52e-317fa33a8b53" config-ref="HTTP_Listener_config" path="/allproducts"/>
-		<java:invoke doc:name="Invoke" doc:id="8c654a90-e68f-4cb1-ab53-1359ac566355" instance="allProducts" class="com.demo.entrypoint.controllers.BestCommerceController" method="greetings()"/>
+		<java:invoke doc:name="Invoke" doc:id="8c654a90-e68f-4cb1-ab53-1359ac566355" instance="allProducts" class="com.demo.entrypoint.controllers.BestCommerceController" method="allProducts()"/>
 		<logger level="INFO" doc:name="Logger" doc:id="05e336d0-cea0-4b45-bcf9-770f1b6e1d9c" message="#[payload]"/>
 		<ee:transform doc:name="Transform Message" doc:id="8f534c59-5552-4342-b713-a3a15fb06806" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0
 output json
 ---
-payload as String]]></ee:set-payload>
+payload as Array]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
 	</flow>
