@@ -11,8 +11,11 @@ import java.util.List;
 import javax.inject.Inject;
 
 import com.demo.entrypoint.entity.Product;
+import com.demo.entrypoint.entity.Test;
 import com.demo.entrypoint.services.ProductsService;
 import com.demo.entrypoint.services.ProductsServiceImpl;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class BestCommerceController {
 
@@ -25,6 +28,20 @@ public class BestCommerceController {
 	
 	public List<String> listProducts(){
 		return productsService.listProducts();
+	}
+	
+	public String singleProduct() throws JsonProcessingException {
+		ObjectMapper objectmapper = new ObjectMapper();
+		/*Product rv = new Product(1, "asd", "asd", "asd", 10.0, 1, "asd", "asd");
+		System.out.println(rv);
+		System.out.println(objectmapper.writeValueAsString(rv));
+		System.out.print(rv.toString());*/
+		Test rv = new Test(1, "Test");
+		System.out.println(rv);
+		System.out.println(objectmapper.writeValueAsString(rv));
+		System.out.print(rv.toString());
+		
+		return objectmapper.writeValueAsString(rv);
 	}
 	
 	public List<String> allProducts() {
