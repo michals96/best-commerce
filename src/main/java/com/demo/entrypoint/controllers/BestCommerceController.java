@@ -11,11 +11,9 @@ import java.util.List;
 import javax.inject.Inject;
 
 import com.demo.entrypoint.entity.Product;
-import com.demo.entrypoint.entity.Test;
 import com.demo.entrypoint.services.ProductsService;
 import com.demo.entrypoint.services.ProductsServiceImpl;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class BestCommerceController {
 
@@ -26,7 +24,7 @@ public class BestCommerceController {
 		this.productsService = new ProductsServiceImpl();
 	}
 	
-	public List<String> listProducts(){
+	public List<Product> listProducts(){
 		return productsService.listProducts();
 	}
 	

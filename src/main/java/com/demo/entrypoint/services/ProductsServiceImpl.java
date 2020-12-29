@@ -24,11 +24,10 @@ public class ProductsServiceImpl implements ProductsService{
 	
 	public ProductsServiceImpl() {
 		this.productsRepository = new ProductsRepositoryImpl();
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public List<String> listProducts() {
+	public List<Product> listProducts() {
 		return productsRepository.getAllProducts();
 	}
 	
