@@ -8,18 +8,22 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import com.demo.entrypoint.entity.Product;
 import com.demo.entrypoint.services.ProductsService;
+import com.demo.entrypoint.services.ProductsServiceImpl;
 
 public class BestCommerceController {
-	
+
+	@Inject
 	private final ProductsService productsService;
 	
-	public BestCommerceController(ProductsService productsService) {
-		this.productsService = productsService;
+	public BestCommerceController() {
+		this.productsService = new ProductsServiceImpl();
 	}
 	
-	public List<Product> listProducts(){
+	public List<String> listProducts(){
 		return productsService.listProducts();
 	}
 	

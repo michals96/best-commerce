@@ -2,15 +2,19 @@ package com.demo.entrypoint.services;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.demo.entrypoint.entity.Product;
 import com.demo.entrypoint.repositories.ProductsRepository;
+import com.demo.entrypoint.repositories.ProductsRepositoryImpl;
 
-@Service
+@Service("productsServiceImpl")
 public class ProductsServiceImpl implements ProductsService{
 	
+	@Inject
 	private final ProductsRepository productsRepository;
 	
 	@Autowired
@@ -18,9 +22,15 @@ public class ProductsServiceImpl implements ProductsService{
 		this.productsRepository = productsRepository;
 	}
 	
+	public ProductsServiceImpl() {
+		this.productsRepository = new ProductsRepositoryImpl();
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
-	public List<Product> listProducts() {
+	public List<String> listProducts() {
 		return productsRepository.getAllProducts();
 	}
+	
 
 }
