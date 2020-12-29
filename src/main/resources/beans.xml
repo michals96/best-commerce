@@ -13,9 +13,6 @@
       http://www.springframework.org/schema/context/spring-context-4.2.xsd
       http://www.springframework.org/schema/security
       http://www.springframework.org/schema/security/spring-security-4.2.xsd">
-
-    <bean id="xmen" class="com.demo.entrypoint.Person">
-    </bean>
     
     <bean id="allProducts" class="com.demo.entrypoint.controllers.BestCommerceController">
     </bean>
