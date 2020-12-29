@@ -31,17 +31,19 @@ public class BestCommerceController {
 	}
 	
 	public String singleProduct() throws JsonProcessingException {
-		ObjectMapper objectmapper = new ObjectMapper();
+		
 		/*Product rv = new Product(1, "asd", "asd", "asd", 10.0, 1, "asd", "asd");
 		System.out.println(rv);
 		System.out.println(objectmapper.writeValueAsString(rv));
 		System.out.print(rv.toString());*/
-		Test rv = new Test(1, "Test");
-		System.out.println(rv);
+		Product rv = new Product(1, "asd", "asd", "asd", 10.0, 1, "asd", "asd");
+		/*System.out.println(rv);
 		System.out.println(objectmapper.writeValueAsString(rv));
 		System.out.print(rv.toString());
 		
-		return objectmapper.writeValueAsString(rv);
+		return objectmapper.writeValueAsString(rv);*/
+		
+		return rv.toString();
 	}
 	
 	public List<String> allProducts() {
