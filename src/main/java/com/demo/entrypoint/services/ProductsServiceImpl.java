@@ -1,5 +1,6 @@
 package com.demo.entrypoint.services;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -19,6 +20,8 @@ import com.sun.org.apache.xml.internal.resolver.readers.SAXCatalogParser;
 @Service("productsServiceImpl")
 public class ProductsServiceImpl implements ProductsService{
 	
+	final List<String> sortingParameters = Arrays.asList("price", "inventory");
+	
 	@Inject
 	private final ProductsRepository productsRepository;
 	
@@ -27,6 +30,7 @@ public class ProductsServiceImpl implements ProductsService{
 	}
 	
 	public List<Product> filterListByInventory(List<Product> list) {
+		// Products with inventory lower than 5 cannot be listed.
 		return list.stream().filter(product -> product.getInventory() >= 5).collect(Collectors.toList());
 	}
 	
@@ -37,6 +41,8 @@ public class ProductsServiceImpl implements ProductsService{
 	
 	@Override
 	public List<Product> listSortedProducts(String sortAttribute){
+		
+		if(sortingParameters.contains(sortAttribute) == false) System.out.println("INVALID SORTING ATTRIBUTE!");
 		
 		List<Product> productsList = productsRepository.getAllProducts();
 	

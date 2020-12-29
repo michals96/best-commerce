@@ -46,6 +46,7 @@ public class ProductsRepositoryImpl implements ProductsRepository{
 						resultSet.getString("paymentoption"),
 						resultSet.getString("deliverymethod")));
 			}
+			
 		} catch (SQLException e) {
 
 			e.printStackTrace();

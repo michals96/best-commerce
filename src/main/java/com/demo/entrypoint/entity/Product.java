@@ -97,7 +97,6 @@ public class Product {
 		try {
 			return objectmapper.writeValueAsString(this);
 		} catch (JsonProcessingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
