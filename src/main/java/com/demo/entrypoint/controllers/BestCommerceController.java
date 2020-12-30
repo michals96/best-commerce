@@ -10,17 +10,17 @@ public class BestCommerceController {
 
 	@Inject
 	private final ProductsService productsService;
-	
+
 	public BestCommerceController() {
 		this.productsService = new ProductsServiceImpl();
 	}
-	
-	public List<Product> allProducts(){
+
+	public List<Product> allProducts() {
 		return productsService.listProducts();
 	}
-	
-	public List<Product> sortedProducts(String sortAttribute){
+
+	public List<Product> sortedProducts(String sortAttribute) {
 		return productsService.listSortedProducts(sortAttribute);
 	}
-	
+
 }

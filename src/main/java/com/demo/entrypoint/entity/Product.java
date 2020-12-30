@@ -1,4 +1,5 @@
 package com.demo.entrypoint.entity;
+
 import javax.persistence.*;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -14,26 +15,27 @@ public class Product {
 	private Integer inventory;
 	private String paymentoption;
 	private String deliverymethod;
-	
-    public Product(long id, String category, String name, String description, Double unitprice, Integer inventory, String paymentoption, String deliverymethod) {
-    	this.id = id;
-    	this.category = category;
-    	this.name = name;
-    	this.description = description;
-    	this.unitprice = unitprice;
-    	this.inventory = inventory;
-    	this.paymentoption = paymentoption;
-    	this.deliverymethod = deliverymethod;
+
+	public Product(long id, String category, String name, String description, Double unitprice, Integer inventory,
+			String paymentoption, String deliverymethod) {
+		this.id = id;
+		this.category = category;
+		this.name = name;
+		this.description = description;
+		this.unitprice = unitprice;
+		this.inventory = inventory;
+		this.paymentoption = paymentoption;
+		this.deliverymethod = deliverymethod;
 	}
-    
-    public long getId() {
-    	return id;
-    }
-    
-    public void setId(long id) {
-    	this.id = id;
-    }
-    
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
 	public String getCategory() {
 		return category;
 	}
@@ -89,17 +91,17 @@ public class Product {
 	public void setDeliverymethod(String deliverymethod) {
 		this.deliverymethod = deliverymethod;
 	}
-    
+
 	@Override
 	public String toString() {
 		ObjectMapper objectmapper = new ObjectMapper();
-		
+
 		try {
 			return objectmapper.writeValueAsString(this);
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
-		
+
 		return "Empty JSON";
-    }
+	}
 }
