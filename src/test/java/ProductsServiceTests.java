@@ -12,42 +12,38 @@ import com.demo.entrypoint.services.ProductsService;
 import com.demo.entrypoint.services.ProductsServiceImpl;
 
 public class ProductsServiceTests {
-	
+
 	@Test
-	public void listProductsNotNull()
-    {
+	public void listProductsNotNull() {
 		ProductsService productsService = new ProductsServiceImpl();
-		
+
 		assertNotNull(productsService.listProducts());
 		assertNotNull(productsService.listSortedProducts("price"));
-    }
-	
+	}
+
 	@Test
-	public void productsListIsFiltered()
-    {
-		List<Product> productsList = new ArrayList<Product>(); 
+	public void productsListIsFiltered() {
+		List<Product> productsList = new ArrayList<Product>();
 		productsList.add(new Product(1, "category", "name", "description", 10.0, 4, "paymentoption", "deliverymethod"));
-		
+
 		ProductsServiceImpl productsService = new ProductsServiceImpl();
-		
+
 		assertEquals(productsService.filterListByInventory(productsList).size(), 0);
-    }
-	
+	}
+
 	@Test
-	public void productsListIsSortedByPrice()
-    {
+	public void productsListIsSortedByPrice() {
 		ProductsServiceImpl productsService = new ProductsServiceImpl();
 		List<Product> testList = productsService.listSortedProducts("price");
-		
+
 		assertTrue(testList.get(0).getUnitprice() <= testList.get(1).getUnitprice());
-    }
-	
+	}
+
 	@Test
-	public void productsListIsSortedByInventory()
-    {	
+	public void productsListIsSortedByInventory() {
 		ProductsServiceImpl productsService = new ProductsServiceImpl();
 		List<Product> testList = productsService.listSortedProducts("inventory");
-		
+
 		assertTrue(testList.get(0).getInventory() <= testList.get(1).getInventory());
-    }
+	}
 }
